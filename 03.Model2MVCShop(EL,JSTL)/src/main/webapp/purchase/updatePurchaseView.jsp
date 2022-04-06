@@ -30,6 +30,7 @@ function resetData() {
 
 <form name="detailForm"  method="post" action="/updatePurchase.do">
 
+<input type="hidden" name="tranNo" value="${purchase.tranNo}">
 <input type="hidden" name="prodNo" value="${purchase.purchaseProd.prodNo}">
 
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
@@ -180,7 +181,7 @@ function resetData() {
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td width="200" class="ct_write01">
 			<input 	type="text"  name="receiverDate" class="ct_input_g" 
-							style="width: 100px; height: 19px" maxLength="20" value="${purchase.divyDate}"/>
+							style="width: 100px; height: 19px" maxLength="20"/>
 			<img 	src="../images/ct_icon_date.gif" width="15" height="15"	
 						onclick="show_calendar('document.detailForm.receiverDate', document.detailForm.receiverDate.value)"/>
 		</td>

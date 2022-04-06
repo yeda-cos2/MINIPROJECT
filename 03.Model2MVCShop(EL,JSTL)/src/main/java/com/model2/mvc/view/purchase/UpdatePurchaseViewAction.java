@@ -15,12 +15,12 @@ public class UpdatePurchaseViewAction extends Action {
 	@Override
 	public String execute(	HttpServletRequest request,	HttpServletResponse response) throws Exception {
 		
-		System.out.println("UpdatePurchaseViewAction::시작 prodNo="+request.getParameter("prodNo"));
+		System.out.println("UpdatePurchaseViewAction::시작 tranNo="+request.getParameter("tranNo"));
 
-		int prodNo=Integer.parseInt(request.getParameter("prodNo"));
+		int tranNo=Integer.parseInt(request.getParameter("tranNo"));
 		
 		PurchaseService service=new PurchaseServiceImpl();
-		Purchase purchase=service.getPurchase(prodNo);
+		Purchase purchase=service.getPurchase(tranNo);
 
 		System.out.println("purchaseVO 확인:"+purchase);
 		

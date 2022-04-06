@@ -27,7 +27,7 @@ public class ProductDAO {
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setString(1, product.getProdName());
 		stmt.setString(2, product.getProdDetail());
-		stmt.setString(3, (product.getManuDate()));
+		stmt.setString(3, (product.getManuDate()).replace("-", ""));
 		stmt.setInt(4, product.getPrice());
 		stmt.setString(5, product.getFileName());
 		stmt.executeUpdate();
@@ -40,7 +40,7 @@ public class ProductDAO {
 	//hashmap대신 map으로 인터페이스 코딩
 	Map<String , Object>  map = new HashMap<String, Object>();
 
-	System.out.println("DAO시작");
+	System.out.println("DAO::getProductList 시작");
 	
 	Connection con = DBUtil.getConnection();
 

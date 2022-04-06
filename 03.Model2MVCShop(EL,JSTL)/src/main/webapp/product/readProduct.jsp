@@ -74,7 +74,7 @@ Product product=(Product)request.getAttribute("product");
 		<td class="ct_write01">
 			<table border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td height="26">${product.fileName}</td>
+					<td height="26"> <img src="/images/${product.fileName}" width="300" height="300" ></td>
 				</tr>
 			</table>
 		</td>

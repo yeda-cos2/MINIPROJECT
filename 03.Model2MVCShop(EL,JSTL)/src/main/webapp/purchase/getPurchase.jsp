@@ -40,7 +40,7 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			물품번호 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+			물품번호 
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
@@ -59,7 +59,7 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			구매자아이디 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+			구매자아이디
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${purchase.buyer.userId}</td>
@@ -71,7 +71,7 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			구매방법 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+			구매방법 
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
@@ -90,7 +90,7 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			구매자이름 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+			구매자이름 
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${purchase.receiverName}</td>
@@ -102,7 +102,7 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			구매자연락처 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+			구매자연락처 
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${purchase.receiverPhone}</td>
@@ -114,7 +114,7 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			구매자주소 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+			구매자주소
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${purchase.divyAddr}</td>
@@ -125,7 +125,7 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			구매요청사항 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+			구매요청사항 
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${purchase.divyRequest}</td>
@@ -136,7 +136,7 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			배송희망일 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+			배송희망일 
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${purchase.divyDate}</td>
@@ -147,7 +147,7 @@
 	</tr>
 	<tr>
 		<td width="104" class="ct_write">
-			주문일 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+			주문일 
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${purchase.orderDate}</td>
@@ -169,7 +169,7 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top:3px;">
-						<a href="/updatePurchaseView.do?prodNo=${purchase.purchaseProd.prodNo}">수정</a>
+						<a href="/updatePurchaseView.do?tranNo=${purchase.tranNo}">수정</a>
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

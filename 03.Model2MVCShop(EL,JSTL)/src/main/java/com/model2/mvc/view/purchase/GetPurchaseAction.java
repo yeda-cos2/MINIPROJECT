@@ -15,12 +15,12 @@ public class GetPurchaseAction extends Action {
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
 		
-		System.out.println("GetPurchaseAction::시작 prodNo="+request.getParameter("prodNo"));
+		System.out.println("GetPurchaseAction::시작 tranNo="+request.getParameter("tranNo"));
 
-		int prodNo=Integer.parseInt(request.getParameter("prodNo"));
+		int tranNo=Integer.parseInt(request.getParameter("tranNo"));
 				
 		PurchaseService service=new PurchaseServiceImpl();
-		Purchase purchase=service.getPurchase(prodNo);
+		Purchase purchase=service.getPurchase(tranNo);
 
 		System.out.println("GetPurchaseAction:: purchaseVO 저장:"+purchase);
 

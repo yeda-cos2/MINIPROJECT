@@ -15,16 +15,14 @@ public class AddProductAction extends Action {
 	@Override
 	public String execute(	HttpServletRequest request,HttpServletResponse response) throws Exception {
 		
-		System.out.println("AddAction.java 시작");
+		System.out.println("AddProductAction:: 시작");
 		Product product=new Product();
 		product.setProdName(request.getParameter("prodName"));
 		product.setProdDetail(request.getParameter("prodDetail"));
-		product.setManuDate(request.getParameter("manuDate").replace("-", ""));
-		System.out.println("todate테스트:"+CommonUtil.toDateStr(request.getParameter("manuDate")));
-//		product.setManuDate(CommonUtil.toDateStr(request.getParameter("manuDate")));
+		product.setManuDate(request.getParameter("manuDate"));
 		product.setPrice(Integer.parseInt(request.getParameter("price")));
 		product.setFileName(request.getParameter("fileName"));
-		System.out.println("product set확인: "+product);
+		System.out.println("AddProductAction::productVO 저장= "+product);
 		
 		ProductService service=new ProductServiceImpl();
 		service.addProduct(product);

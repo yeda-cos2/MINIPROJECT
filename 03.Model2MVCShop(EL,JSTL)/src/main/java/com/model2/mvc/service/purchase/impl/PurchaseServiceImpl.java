@@ -26,8 +26,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return purchaseDAO.getPurchaseList(search,buyerId);
 	}
 
-	public Purchase getPurchase(int prodNo) throws Exception {
-		return purchaseDAO.findPurchase(prodNo);
+	public Purchase getPurchase(int tranNo) throws Exception {
+		return purchaseDAO.findPurchase(tranNo);
 	}
 	public void updatePurchase(Purchase purchase) throws Exception {
 		purchaseDAO.updatePurchase(purchase);

@@ -71,7 +71,7 @@
 			<td align="center">${ i }</td>
 			
 			<td></td>
-			<td align="left"><a href="/getProduct.do?prodNo=${purchase.purchaseProd.prodNo }&menu=${param.menu}">${purchase.purchaseProd.prodNo }</a></td>
+			<td align="left"><a href="/getProduct.do?prodNo=${purchase.purchaseProd.prodNo }&menu=${param.menu}">${purchase.purchaseProd.prodNo}</a></td>
 			<td></td>
 			
 			<%-- <td align="left">${purchase.purchaseProd.prodName }</td>
