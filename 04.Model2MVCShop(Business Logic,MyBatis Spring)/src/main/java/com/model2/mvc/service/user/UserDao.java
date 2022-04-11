@@ -1,32 +1,27 @@
 package com.model2.mvc.service.user;
 
-
-import java.util.Map;
+import java.util.List;
 
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.User;
 
-/*
- * FileName : UserDao.java(Data Access Object)
- * 데이터베이스와 직접적인 통신을 담당하는 퍼시스턴스 계층을 담당할 인터페이스
- */
 
+//==> 회원관리에서 CRUD 추상화/캡슐화한 DAO Interface Definition
 public interface UserDao {
+	
+	// INSERT
+	public void addUser(User user) throws Exception ;
 
-	//==> 회원정보 :: INSERT(회원가입)
-	public int addUser(User user) throws Exception;
-	
-	
-	//==> 회원정보 :: SELECT(회원정보 검색)
-	public User getUser(String userId) throws Exception;
-	
-	//==> 회원정보 :: UPDATE(회원정보 변경)
-	public int updateUser(User user) throws Exception;
-	
-	
-	//==> 회원정보 :: SELECT(회원정보 검색)
-	public Map<String, Object> getUserList(Search search) throws Exception;
-	
+	// SELECT ONE
+	public User getUser(String userId) throws Exception ;
 
+	// SELECT LIST
+	public List<User> getUserList(Search search) throws Exception ;
+
+	// UPDATE
+	public void updateUser(User user) throws Exception ;
 	
-}//end of class
+	// 게시판 Page 처리를 위한 전체Row(totalCount)  return
+	public int getTotalCount(Search search) throws Exception ;
+	
+}

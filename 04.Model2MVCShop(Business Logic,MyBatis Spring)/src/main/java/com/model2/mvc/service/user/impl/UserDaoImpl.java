@@ -1,6 +1,6 @@
 package com.model2.mvc.service.user.impl;
 
-import java.util.Map;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,43 +12,42 @@ import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.user.UserDao;
 
 
-
+//==> 회원관리 DAO CRUD 구현
 @Repository("userDaoImpl")
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl implements UserDao{
 	
+	///Field
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	private SqlSession sqlSession;
-	
 	public void setSqlSession(SqlSession sqlSession) {
-		System.out.println("::"+getClass()+".setSqlSession() Call..");
-		this.sqlSession=sqlSession;
+		this.sqlSession = sqlSession;
 	}
 	
-	//Constructor
+	///Constructor
 	public UserDaoImpl() {
-		System.out.println("::"+getClass()+"default Constructor Call..");
+		System.out.println(this.getClass());
 	}
-	
-	//Method
-	public int addUser(User user) throws Exception{
-		return sqlSession.insert("UserMapper10.addUser",user);
-	}
-	
-	public User getUser(String userId) throws Exception{
-		return (User)sqlSession.selectOne("UserMapper10.getUser",userId);
-	}
-	
-	public int updateUser(User user) throws Exception{
-		return sqlSession.update("UserMapper10.updateUser",user);
-	}
-	
-	
-	public Map<String, Object> getUserList(Search search) throws Exception{
-		
-		return sqlSession.selectOne("UserMapper10.getUserList",search);
-		//selectlist인데 잘 멀겠음
-	}
-	
 
+	///Method
+	public void addUser(User user) throws Exception {
+		sqlSession.insert("UserMapper.addUser", user);
+	}
+
+	public User getUser(String userId) throws Exception {
+		return sqlSession.selectOne("UserMapper.getUser", userId);
+	}
+	
+	public void updateUser(User user) throws Exception {
+		sqlSession.update("UserMapper.updateUser", user);
+	}
+
+	public List<User> getUserList(Search search) throws Exception {
+		return sqlSession.selectList("UserMapper.getUserList", search);
+	}
+
+	// 게시판 Page 처리를 위한 전체 Row(totalCount)  return
+	public int getTotalCount(Search search) throws Exception {
+		return sqlSession.selectOne("UserMapper.getTotalCount", search);
+	}
 }
