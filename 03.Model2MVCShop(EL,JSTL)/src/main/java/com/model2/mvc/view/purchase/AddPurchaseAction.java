@@ -32,6 +32,7 @@ public class AddPurchaseAction extends Action {
 		purchase.setDivyAddr(request.getParameter("receiverAddr"));
 		purchase.setDivyRequest(request.getParameter("receiverRequest"));
 		purchase.setDivyDate(request.getParameter("receiverDate"));	
+		purchase.setCount(Integer.parseInt(request.getParameter("count")));
 		purchase.setTranCode("100");
 		
 		HttpSession session=request.getSession();

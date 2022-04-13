@@ -28,7 +28,7 @@ public class PurchaseDAO {
 
 		System.out.println(purchase.getDivyRequest());
 		System.out.println(purchase.getReceiverPhone());
-		String sql = "INSERT INTO transaction VALUES (seq_transaction_tran_no.nextval,?,?,?,?,?,?,?,?,?,sysdate)";
+		String sql = "INSERT INTO transaction VALUES (seq_transaction_tran_no.nextval,?,?,?,?,?,?,?,?,?,?,sysdate)";
 		PreparedStatement stmt = con.prepareStatement(sql);
 
 		System.out.println("어때"+purchase.getDivyDate());
@@ -41,7 +41,8 @@ public class PurchaseDAO {
 		stmt.setString(7, purchase.getDivyRequest());
 		stmt.setString(8, purchase.getTranCode());
 		System.out.println("어이무"+purchase.getDivyDate());
-		stmt.setString(9, purchase.getDivyDate());
+		stmt.setInt(9, purchase.getCount());
+		stmt.setString(10, purchase.getDivyDate());
 
 		stmt.executeUpdate();
 
@@ -205,6 +206,18 @@ public class PurchaseDAO {
 
 		stmt.close();
 		con.close();
+	}
+	
+	public void updateRemain(String tranNo) throws Exception {
+
+		Connection con = DBUtil.getConnection();
+
+		String sql = "select "
+				+ "p.prod_no, p.sum, t.count "
+				+ "from product p, transaction t "
+				+ "where p.prod_no(+)=t.prod_no";
+		// sql 키워드: 대문자, identifier: 소문자
+		
 	}
 
 	// 게시판 Page 처리를 위한 전체 Row(totalCount) return

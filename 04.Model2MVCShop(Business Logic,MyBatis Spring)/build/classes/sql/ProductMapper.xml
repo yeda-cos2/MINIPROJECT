@@ -54,20 +54,20 @@
 	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
 	  					FROM		(	SELECT p.PROD_NO,p.PROD_NAME,p.PROD_DETAIL,p.MANUFACTURE_DAY,p.PRICE,p.IMAGE_FILE,p.REG_DATE,t.TRAN_STATUS_CODE 
 											FROM transaction t, product p
+											<if test="searchCondition != null">
 											<where>
 											t.prod_no(+)=p.prod_no
-											<if test="searchCondition != null">
 													<if test="searchCondition == 0 and searchKeyword !='' ">
-										 				and p.PROD_NO = #{searchKeyword}
+										 				and p.PROD_NO LIKE '%' || #{searchKeyword} ||'%'
 													</if>
 													<if test="searchCondition == 1 and searchKeyword !='' ">
-										 				and p.prod_name = #{searchKeyword}
+										 				and p.prod_name LIKE '%' || #{searchKeyword}||'%'
 													</if>
 													<if test="searchCondition == 2 and searchKeyword !='' ">
-										 				and p.PRICE = #{searchKeyword}
+										 				and p.PRICE LIKE '%' || #{searchKeyword}||'%'
 													</if>
-											</if>
 													</where>
+											</if>
 											ORDER BY p.prod_no ) inner_table
 											
 						WHERE ROWNUM &lt;= #{endRowNum} )
@@ -92,13 +92,13 @@
 						<if test="searchCondition != null">
 							<where>
 								<if test="searchCondition == 0 and searchKeyword !='' ">
-						 			prod_no = #{searchKeyword}
+						 			prod_no LIKE '%' ||  #{searchKeyword}||'%'
 								</if>
 								<if test="searchCondition == 1 and searchKeyword !='' ">
-						 		prod_name = #{searchKeyword}
+						 		prod_name LIKE '%' || #{searchKeyword}||'%'
 								</if>
 								<if test="searchCondition == 2 and searchKeyword !='' ">
-						 		price = #{searchKeyword}
+						 		price LIKE '%' ||  #{searchKeyword}||'%'
 								</if>
 							</where>
 						</if> ) countTable						

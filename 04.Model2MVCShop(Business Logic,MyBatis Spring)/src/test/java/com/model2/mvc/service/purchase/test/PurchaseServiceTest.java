@@ -122,7 +122,7 @@ public class PurchaseServiceTest {
 	 	search.setCurrentPage(1);
 	 	search.setPageSize(3);
 	 	
-	 	Map<String,Object> map = purchaseService.getPurchaseList(search, "user09");
+	 	Map<String,Object> map = purchaseService.getPurchaseList(search, "admin");
 	 	System.out.println("안나오냐"+map);
 	 	List<Object> list = (List<Object>)map.get("list");
 //	 	Assert.assertEquals(3, list.size());

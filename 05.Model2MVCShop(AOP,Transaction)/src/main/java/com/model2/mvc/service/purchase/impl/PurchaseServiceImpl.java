@@ -36,13 +36,13 @@ public class PurchaseServiceImpl implements PurchaseService{
 		purchaseDao.addPurchase(purchase);
 	}
 
-	public Purchase getPurchase(int prodNo) throws Exception {
-		return purchaseDao.getPurchase(prodNo);
+	public Purchase getPurchase(int tranNo) throws Exception {
+		return purchaseDao.getPurchase(tranNo);
 	}
 
 	public Map<String, Object> getPurchaseList(Search search,String buyerId) throws Exception {
 		List<Purchase> list= purchaseDao.getPurchaseList(search, buyerId);
-		int totalCount = purchaseDao.getTotalCount(search);
+		int totalCount = purchaseDao.getTotalCount(search,buyerId);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list );
 		map.put("totalCount", new Integer(totalCount));

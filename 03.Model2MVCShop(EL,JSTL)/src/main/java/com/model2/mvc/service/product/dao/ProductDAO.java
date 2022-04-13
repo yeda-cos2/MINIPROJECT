@@ -22,16 +22,18 @@ public class ProductDAO {
 
 		Connection con = DBUtil.getConnection();
 
-		String sql = "INSERT INTO PRODUCT VALUES (seq_product_prod_no.nextval,?,?,?,?,?,SYSDATE)";
+		String sql = "INSERT INTO PRODUCT VALUES (seq_product_prod_no.nextval,?,?,?,?,?,?,SYSDATE)";
 		// sql 키워드: 대문자, identifier: 소문자
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setString(1, product.getProdName());
 		stmt.setString(2, product.getProdDetail());
 		stmt.setString(3, (product.getManuDate()).replace("-", ""));
 		stmt.setInt(4, product.getPrice());
-		stmt.setString(5, product.getFileName());
+		stmt.setInt(5, product.getRemain());
+		stmt.setString(6, product.getFileName());
+		
 		stmt.executeUpdate();
-
+		
 		stmt.close(); // close
 		con.close();
 	}
@@ -173,6 +175,20 @@ public class ProductDAO {
 		
 		stmt.close();
 		con.close();
+	}
+	
+
+	public void insertManage(Product product) throws Exception{
+		System.out.println("insertManageDAO시작");
+		
+		
+		Connection con = DBUtil.getConnection();
+		String sql="INSERT INTO MANAGE VALUES (?,?,0) ";
+
+		PreparedStatement stmt = con.prepareStatement(sql);
+		System.out.println(product.getProdName());
+		stmt.setInt(1, product.getProdNo());
+		stmt.setInt(2, product.getRemain());
 	}
 	
 	// 게시판 Page 처리를 위한 전체 Row(totalCount)  return

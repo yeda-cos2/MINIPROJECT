@@ -56,7 +56,10 @@ public class PurchaseDaoImpl implements PurchaseDao{
 	}
 //
 	// 게시판 Page 처리를 위한 전체 Row(totalCount)  return
-	public int getTotalCount(Search search) throws Exception {
-		return sqlSession.selectOne("PurchaseMapper.getTotalCount", search);
+	public int getTotalCount(Search search,String buyerId) throws Exception {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("buyerId", buyerId);
+		map.put("search", search);
+		return sqlSession.selectOne("PurchaseMapper.getTotalCount", map);
 	}
 }

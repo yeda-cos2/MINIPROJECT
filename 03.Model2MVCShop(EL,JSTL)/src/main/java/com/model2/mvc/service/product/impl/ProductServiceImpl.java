@@ -33,5 +33,9 @@ public class ProductServiceImpl implements ProductService {
 	public void updateProduct(Product product) throws Exception {
 		productDAO.updateProduct(product);
 	}
+	
+	public void insertManage(Product product) throws Exception{
+		productDAO.insertManage(product);
+	}
 
 }

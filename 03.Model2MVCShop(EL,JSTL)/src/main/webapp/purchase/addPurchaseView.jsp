@@ -121,6 +121,8 @@ function fncAddPurchase() {
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${product.regDate}</td>
 	</tr>
+	
+	
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
@@ -132,6 +134,8 @@ function fncAddPurchase() {
 		<td class="ct_write01">${user.userId}</td>
 		<input type="hidden" name="buyerId" value="${user.userId}" />
 	</tr>
+	
+	
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
@@ -146,6 +150,19 @@ function fncAddPurchase() {
 			</select>
 		</td>
 	</tr>
+	
+	<tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+	<tr>
+		<td width="104" class="ct_write">구매개수</td>
+		<td bgcolor="D6D6D6" width="1"></td>
+		<td class="ct_write01">
+			<input 	type="number" name="count" class="ct_input_g" 
+							style="width: 100px; height: 19px" maxLength="20"   />
+		</td>
+	</tr>
+	
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>

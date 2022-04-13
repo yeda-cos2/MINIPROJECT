@@ -62,10 +62,14 @@
 	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
 	  					FROM		(	SELECT *
 											FROM transaction
+											<choose>
+											<when test="#{buyerId=='admin'}">
 											<where>
-											buyer_id=#{buyerId}
+											buyer_id=#{buyerId}  
 											</where>
-											ORDER BY tran_no ) inner_table
+											</when>
+											</choose>
+											ORDER BY tran_no) inner_table
 											
 						WHERE ROWNUM &lt;= #{search.endRowNum} )
 		WHERE row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum} 

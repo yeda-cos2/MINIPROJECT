@@ -14,4 +14,6 @@ public interface ProductService {
 	public Product getProduct(int prodNo) throws Exception;
 
 	public void updateProduct(Product product) throws Exception;
+	
+	public void insertManage(Product product) throws Exception;
 }
