@@ -17,15 +17,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.service.domain.Product;
+import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.product.ProductService;
+import com.model2.mvc.service.purchase.PurchaseService;
 
 @Controller
-
 public class ProductController {
 	/// Field
 	@Autowired
 	@Qualifier("productServiceImpl")
 	private ProductService productService;
+	
+	@Autowired
+	@Qualifier("purchaseServiceImpl")
+	private PurchaseService purchaseService;
 	// setter Method 구현 않음
 
 	public ProductController() {
@@ -52,18 +57,18 @@ public class ProductController {
 	}
 
 	@RequestMapping("/addProduct.do")
-	public String addProduct(@ModelAttribute("product") Product product) throws Exception {
+	public String addProduct(@ModelAttribute("product") Product product,Model model) throws Exception {
 
 		System.out.println("/addProduct.do");
 		// Business Logic
 		product.setManuDate(product.getManuDate().replace("-", ""));
 		productService.addProduct(product);
-
-		return "redirect:/product/readProduct.jsp";
+				
+		return "forward:/product/readProduct.jsp";
 	}
 
 	@RequestMapping("/getProduct.do")
-	public String getProduct(@RequestParam("prodNo") int prodNo, Model model) throws Exception {
+	public String getProduct(@RequestParam("prodNo") int prodNo,@RequestParam("menu") String menu, Model model) throws Exception {
 
 		System.out.println("/getProduct.do");
 		// Business Logic
@@ -71,7 +76,7 @@ public class ProductController {
 		// Model 과 View 연결
 		model.addAttribute("product", product);
 
-		return "forward:/product/getProduct.jsp";
+		return "forward:/product/getProduct.jsp?menu="+menu;
 	}
 
 	@RequestMapping("/updateProductView.do")
@@ -83,7 +88,7 @@ public class ProductController {
 		// Model 과 View 연결
 		model.addAttribute("product", product);
 
-		return "forward:/product/updateProduct.jsp";
+		return "forward:/product/updateProductView.jsp";
 	}
 
 	@RequestMapping("/updateProduct.do")
@@ -92,22 +97,33 @@ public class ProductController {
 
 		System.out.println("/updateProduct.do");
 		// Business Logic
+		product.setManuDate(product.getManuDate().replace("-", ""));
+
 		productService.updateProduct(product);
 
 		return "redirect:/getProduct.do?prodNo=" + product.getProdNo();
 	}
 
 	@RequestMapping("/listProduct.do")
-	public String listProduct(@ModelAttribute("search") Search search, Model model, HttpServletRequest request)
+	public String listProduct(@ModelAttribute("search") Search search
+			,@RequestParam("menu") String menu, Model model, HttpServletRequest request)
 			throws Exception {
 
+		
 		System.out.println("/listProduct.do");
 
 		if (search.getCurrentPage() == 0) {
 			search.setCurrentPage(1);
 		}
+		
+		System.out.println("sort"+search.getSortCondition());
+		if(search.getSortCondition()==null) {
+			search.setSortCondition("3");
+		}
+		search.setSortCondition(search.getSortCondition().replace(",", ""));
+		System.out.println("뭐냐고요"+search.getSortCondition());
 		search.setPageSize(pageSize);
-
+		
 		// Business logic 수행
 		Map<String, Object> map = productService.getProductList(search);
 
@@ -115,11 +131,17 @@ public class ProductController {
 				pageSize);
 		System.out.println(resultPage);
 
+		HttpSession session=request.getSession();
+		User user=(User)session.getAttribute("user");
+		
 		// Model 과 View 연결
 		model.addAttribute("list", map.get("list"));
+		System.out.println("머냐고"+map.get("list"));
 		model.addAttribute("resultPage", resultPage);
+		System.out.println("resultPage는"+resultPage);
 		model.addAttribute("search", search);
+		model.addAttribute("user",user);
 
-		return "forward:/product/listProduct.jsp";
+		return "forward:/product/listProduct.jsp?menu="+menu;
 	}
 }

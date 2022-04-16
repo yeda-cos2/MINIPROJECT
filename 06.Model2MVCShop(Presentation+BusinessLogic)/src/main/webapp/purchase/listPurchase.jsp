@@ -63,7 +63,7 @@
 	<c:forEach var="purchase" items="${list}">
 		<c:set var="i" value="${ i+1 }" />
 		<tr class="ct_list_pop">
-			<td align="center"><a href="/getPurchase.do?prodNo=${purchase.purchaseProd.prodNo }">${ i }</a></td>
+			<td align="center"><a href="/getPurchase.do?tranNo=${purchase.tranNo }">${ i }</a></td>
 			<td></td>
 			<td align="left">
 			
@@ -105,7 +105,7 @@
 		<td></td>
 		<td align="left">
 		<c:if test="${purchase.tranCode=='200'}">
-		<a href="/updateTranCode.do?menu=search&tranCode=${purchase.tranCode}&prodNo=${purchase.purchaseProd.prodNo}">¹°°ÇµµÂø</a>
+		<a href="/updateTranCode.do?menu=search&tranCode=${purchase.tranCode}&tranNo=${purchase.tranNo}">¹°°ÇµµÂø</a>
 		</c:if>
 		</td>
 	</tr>

@@ -58,6 +58,9 @@
 		<td class="ct_line02"></td>--%>
 		<td class="ct_list_b">배송현황</td>
 		<td class="ct_line02"></td>
+		<td class="ct_list_b">현재상태</td>
+		<td class="ct_line02"></td>
+		
 		<td class="ct_list_b">구매회원</td>
 	</tr>
 	<tr>
@@ -89,6 +92,34 @@
 					<td align="left">현재 배송완료 상태입니다.</td>
 				</c:otherwise>
 			</c:choose>
+			
+			
+			
+			<td></td>
+			<td align="left">
+			
+			<c:if test="${user.role=='admin' }">
+			<c:choose>
+			<c:when test="${purchase.tranCode=='100'}">
+			구매완료 
+			<a href="/updateTranCode.do?menu=search&tranCode=${purchase.tranCode }&tranNo=${purchase.tranNo}">배송하기</a>
+			</c:when>
+			<c:when test="${purchase.tranCode=='200'}">
+			배송중
+			</c:when>
+			<c:when test="${purchase.tranCode=='300'}">
+			배송완료
+			</c:when>
+			<c:otherwise>
+			판매중
+			</c:otherwise>
+			</c:choose>
+			</c:if>
+			
+			
+			
+			
+			
 			
 			<td></td>
 			<td align="left">

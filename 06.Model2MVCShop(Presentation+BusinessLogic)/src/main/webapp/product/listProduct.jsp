@@ -85,20 +85,17 @@ function fncGetList(currentPage) {
 <table width="20%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 	<tr>
 	<td align="left">
-	<c:if test="${user.role=='user' }">
 	<select name="sortCondition" class="ct_input_g" style="width:90px">
 	
 	<option value="0" ${!empty search.sortCondition && search.sortCondition==0 ? "selected" : ""}>낮은가격순</option>
 	<option value="1" ${!empty search.sortCondition && search.sortCondition==1 ? "selected" : ""}>높은가격순</option>
 	<option value="2" ${!empty search.sortCondition && search.sortCondition==2 ? "selected" : ""}>최신등록순</option>
 	</select>
-							<a href="javascript:fncGetList('1');">정렬</a>
-	
-	</c:if>
+	<a href="javascript:fncGetList('1');">정렬</a>
 </td>
 				</tr>
 			</table>
-			<input type="hidden" name="sortCondition" value=${sortCondition }>
+			<input type="hidden" name="sortCondition" value="${sortCondition }">
 	
 	<%-- <table width="5%" border="1" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 	<tr>
@@ -196,21 +193,7 @@ function fncGetList(currentPage) {
 			</c:choose>
 			</c:if>
 			
-			<c:if test="${user.role=='admin' }">
-			<c:choose>
-			<c:when test="${product.proTranCode=='100'}">
-			구매완료 
-			<a href="/updateTranCode.do?menu=search&tranCode=${product.proTranCode }&prodNo=${product.prodNo}">배송하기</a>
 			
-			</c:when>
-			<c:when test="${product.proTranCode=='200'||product.proTranCode=='300'}">
-			배송완료
-			</c:when>
-			<c:otherwise>
-			판매중
-			</c:otherwise>
-			</c:choose>
-			</c:if>
 			
 			</td>		
 		</tr>
